@@ -47,7 +47,7 @@ for name, email, role in users:
         VALUES (%s, %s, %s, %s, %s)
     """, (name, email, generate_password_hash("password123"), role, "0300-0000000"))
 
-print("✅ Users inserted (1 landlord, 5 tenants, 1 mediator, 1 admin)")
+print(" Users inserted (1 landlord, 5 tenants, 1 mediator, 1 admin)")
 
 # ── Properties (all owned by Ahmed = landlord id 1) ─
 properties = [
@@ -63,7 +63,7 @@ for landlord_id, address, description in properties:
         VALUES (%s, %s, %s)
     """, (landlord_id, address, description))
 
-print("✅ Properties inserted (5 properties for Ahmed)")
+print(" Properties inserted (5 properties for Ahmed)")
 
 # ── Tenancy (each tenant assigned to a different property) ──
 # tenant_id, property_id, monthly_rent
@@ -80,7 +80,7 @@ for tenant_id, property_id, monthly_rent in tenancies:
         VALUES (%s, %s, CURDATE(), %s)
     """, (tenant_id, property_id, monthly_rent))
 
-print("✅ Tenancies inserted (each tenant assigned to a property)")
+print(" Tenancies inserted (each tenant assigned to a property)")
 
 # ── Payments ───────────────────────────────────────
 # tenancy_id, tenant_id, property_id, amount_due, amount_paid, payment_month,
@@ -120,7 +120,7 @@ for tenancy_id, tenant_id, property_id, amount_due, amount_paid, payment_month, 
         payment_method, reference_note, status
     ))
 
-print("✅ Payments inserted (15 payment records)")
+print(" Payments inserted (15 payment records)")
 
 # ── Service Providers ──────────────────────────────
 providers = [
@@ -137,13 +137,13 @@ for name, contact, service in providers:
         VALUES (%s, %s, %s)
     """, (name, contact, service))
 
-print("✅ Service providers inserted (6 providers)")
+print(" Service providers inserted (6 providers)")
 
 conn.commit()
 cursor.close()
 conn.close()
 
-print("\n🎉 Database seeded successfully!")
+print("\n Database seeded successfully!")
 print("\nLogin credentials (all passwords: password123)")
 print("─" * 45)
 print("  Landlord : ahmed@test.com")
